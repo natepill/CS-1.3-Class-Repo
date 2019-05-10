@@ -1,0 +1,19 @@
+{
+<<<<<<< HEAD
+  "binarytree_test.py::BinarySearchTreeTest::test_items_level_order_with_3_strings": true,
+  "binarytree_test.py::BinarySearchTreeTest::test_items_level_order_with_7_numbers": true,
+  "binarytree_test.py::BinarySearchTreeTest::test_items_post_order_with_3_strings": true,
+  "binarytree_test.py::BinarySearchTreeTest::test_items_post_order_with_7_numbers": true,
+  "binarytree_test.py::BinarySearchTreeTest::test_items_pre_order_with_3_strings": true,
+  "binarytree_test.py::BinarySearchTreeTest::test_items_pre_order_with_7_numbers": true
+=======
+  "set_test.py::SetTest::test_add": true,
+  "set_test.py::SetTest::test_contains": true,
+  "set_test.py::SetTest::test_difference": true,
+  "set_test.py::SetTest::test_intersect": true,
+  "set_test.py::SetTest::test_is_subset_true": true,
+  "set_test.py::SetTest::test_remove": true,
+  "set_test.py::SetTest::test_union": true,
+  "set_test.py::SetTest::test_union_with_duplicates": true
+>>>>>>> 8a8d2fd68a9ecbbd8319f1495618cea25a8c398c
+}
