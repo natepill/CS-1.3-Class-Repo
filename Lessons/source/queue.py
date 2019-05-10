@@ -36,7 +36,7 @@ class LinkedQueue(object):
     def front(self):
         """Return the item at the front of this queue without removing it,
         or None if this queue is empty."""
-        if self.list.is_empty():
+        if self.is_empty():
             return None
         return self.list.head.data
         # TODO: Return front item, if any
@@ -46,7 +46,7 @@ class LinkedQueue(object):
         or raise ValueError if this queue is empty.
         Running time: O(1) – make self.head.next = self.head """
 
-        if self.list.is_empty():
+        if self.is_empty():
             raise ValueError("List Empty")
 
         dequeued_value = self.list.head.data
@@ -91,7 +91,7 @@ class ArrayQueue(object):
     def front(self):
         """Return the item at the front of this queue without removing it,
         or None if this queue is empty."""
-        if not is_empty():
+        if not self.is_empty():
             return self.list[0]
 
         # TODO: Return front item, if any

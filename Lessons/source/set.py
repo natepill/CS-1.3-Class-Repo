@@ -14,10 +14,23 @@ class Set(object):
                 self.add(element)
 
 
+    def size(self):
+        return self.data.size # O1 operation
+
+    def contains(self, element):
+        """
+        Given an element will return true or false if element in Set
+        O(1)
+        """
+        return self.contains(element)
+
     def add(self, element):
         """Add element to this set, if not present already"""
         # HashTable requires key,value. Sets are essentially just keys,
         # so setting the value to element ensures no confusion in terms of whats in the set
+        if self.contains(element):
+            return
+
         self.data.set(element,element)
 
     def remove(self, element):
@@ -26,14 +39,20 @@ class Set(object):
         self.data.delete(element)
 
 
+    def elements(self):
+        """ Iterable list of elements in Set"""
+
+        return self.data.keys() # Keys from hashtable
+
+
     def union(self, other_set):
-        """Return a new set that is the union of this set and other_set"""
+        """Return a new set that is the union of this set and other_set: O(M*N) for iterating over both sets"""
 
         union = Set()
 
         # Go through other_set and add the keys that are not in the current set
-        for key in other_set:
-            if self.data.contains(key):
+        for key in other_set.elements():
+            if self.contains(key):
                 continue
 
             # Key not found in current set
@@ -44,15 +63,15 @@ class Set(object):
 
 
     def intersection(self, other_set):
-        """Return a new set that is the intersection of this set and other_set"""
+        """Return a new set that is the intersection of this set and other_set: O(n)"""
 
         # Empty set without any values from current or other set because we only want SIMILAR keys
         intersection = Set()
 
-        for key in other_set.data:
+        for key in other_set.elements():
 
             # Keys matched in current set and other_set
-            if self.data.contains(key):
+            if self.contains(key):
                 intersection.add(key)
 
             # There was no matching key
@@ -63,15 +82,17 @@ class Set(object):
 
 
     def difference(self, other_set):
-        """Return a new set that is the difference of this set and other_set"""
+        """Return a new set that has elments of current set but not other_set"""
 
         difference = Set()
 
-        for key in other_set:
+        for key in self.elements():
 
-            # Key not found in self.data
-            if not self.data.contains(key):
+            # Key not found in other set
+            if not other_set.contains(key):
                 difference.add(key)
+            else:
+                continue
 
 
         return difference
@@ -81,11 +102,10 @@ class Set(object):
         """
         Return Bool that represents if this set is a subset of the other_set
         O(n) since we need to iterate over all data in self
-
         """
 
         # To be a subset, the current set needs to have smaller length
-        if self.length() > other_set.length():
+        if self.size() > other_set.size():
             return False
 
         # If smaller, check each element to ensure its in the larger set
