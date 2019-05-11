@@ -12,8 +12,6 @@ class TrieNode(object):
 
         # to indicate we traverse all the digits in the route
         self.end_path = False
-
-
         # consider having store the len of the route
 
 class TrieTree(object):
@@ -28,6 +26,7 @@ class TrieTree(object):
     def add(self, route_number, price):
         """Add the new digit as node"""
         node = self.root
+        print('self.root', self.root)
 
         for index in range(1, len(route_number)):
             value = int(route_number[index])
@@ -50,4 +49,3 @@ if __name__ == "__main__":
     obj = TrieTree()
     obj.add(route, price)
     print(obj)
-    
