@@ -85,23 +85,32 @@ class Set(object):
     def difference(self, other_set):
         """Return a new set that has elments of current set but not other_set"""
 
+
         difference = Set()
 
-        for key in self.elements():
-
-            # Key not found in other set
-            if not other_set.contains(key):
+        for key in other_set.elements():
+            if self.contains(key) == False:
                 difference.add(key)
-            else:
-                continue
-
-
         return difference
+
+    def symetric_difference(self, other_set):
+            '''Return values unique in current set and other_set'''
+        symetric_difference = et()
+
+        for key in other_set.elements():
+            if not self.contains(key):
+                symetric_difference.add(key)
+
+        for key in self.elements():
+            if not other_set.contains(key):
+                symetric_difference.add(item)
+
+        return symetric_difference
 
 
     def is_subset(self, other_set):
         """
-        Return Bool that represents if this set is a subset of the other_set
+        Return Bool that represents if this set is a subset of the other_set: Best case: O1
         O(n) since we need to iterate over all data in self
         """
 
