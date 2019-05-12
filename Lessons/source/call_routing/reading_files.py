@@ -1,5 +1,4 @@
 # reading the file
-
 from Trie_tree import TrieTree
 
 def reading_route(file_name):

@@ -1,4 +1,5 @@
 {
+  "set_test.py::SetTest": true,
   "set_test.py::SetTest::test_add": true,
   "set_test.py::SetTest::test_contains": true,
   "set_test.py::SetTest::test_difference": true,

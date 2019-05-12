@@ -9,7 +9,7 @@ class Set(object):
 
         self.data = HashTable()  #Store data in hashtable
 
-        if elements != None:
+        if elements is not None:
             for element in elements:
                 self.add(element)
 
@@ -22,7 +22,7 @@ class Set(object):
         Given an element will return true or false if element in Set
         O(1)
         """
-        return self.contains(element)
+        return self.data.contains(element)
 
     def add(self, element):
         """Add element to this set, if not present already"""
@@ -36,8 +36,10 @@ class Set(object):
     def remove(self, element):
         """Remove element from this set, if present, or else raise KeyError"""
 
-        self.data.delete(element)
-
+        if self.contains(element):
+            self.data.delete(element)
+        else:
+            raise KeyError('Element not found in set.')
 
     def elements(self):
         """ Iterable list of elements in Set"""
@@ -48,22 +50,21 @@ class Set(object):
     def union(self, other_set):
         """Return a new set that is the union of this set and other_set: O(M*N) for iterating over both sets"""
 
-        union = Set()
+        union = Set(self.elements())
 
         # Go through other_set and add the keys that are not in the current set
         for key in other_set.elements():
-            if self.contains(key):
+            if union.contains(key):
                 continue
-
             # Key not found in current set
             else:
-                new_set.add(key)
+                union.add(key)
 
         return union
 
 
     def intersection(self, other_set):
-        """Return a new set that is the intersection of this set and other_set: O(n)"""
+        """Return a new set that is the intersection of this set and other_set. Values contained in BOTH sets: O(n)"""
 
         # Empty set without any values from current or other set because we only want SIMILAR keys
         intersection = Set()
