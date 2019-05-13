@@ -91,6 +91,7 @@ class Set(object):
         for key in other_set.elements():
             if self.contains(key) == False:
                 difference.add(key)
+
         return difference
 
     def symetric_difference(self, other_set):
