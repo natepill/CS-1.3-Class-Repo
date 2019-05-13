@@ -97,10 +97,10 @@ class Set(object):
 
     def symetric_difference(self, other_set):
         '''Return values unique in current set and other_set'''
-        # (A – B) ∪ (B – A)
 
         current_set = Set(self.elements())
 
+        # (A – B) ∪ (B – A)
         symetric_difference = current_set.difference(other_set).union(other_set.difference(current_set))
 
         return symetric_difference
