@@ -101,8 +101,10 @@ class Set(object):
         current_set = Set(self.elements())
 
         # (A – B) ∪ (B – A)
-        symetric_difference = current_set.difference(other_set).union(other_set.difference(current_set))
+        # Also works! Sets are cool!
+        # symetric_difference = current_set.difference(other_set).union(other_set.difference(current_set))
 
+        symetric_difference = current_set.union(other_set).difference(current_set.intersection(other_set))
         return symetric_difference
 
 
