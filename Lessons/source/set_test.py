@@ -77,21 +77,16 @@ class SetTest(unittest.TestCase):
 
     def test_difference(self):
         s = Set(['Person1', 'Person2', 'Person3'])
-        other_set = Set(['Person1', 'Person4'])
+        other_set = Set(['Person1', 'Person3'])
         difference = s.difference(other_set)
-        assert difference.contains('Person4') == True
+        assert difference.contains('Person2') == True
         assert difference.size() == 1
         other_set = Set(['Person1', 'Person4', 'Z'])
         difference = s.difference(other_set)
-        assert difference.contains('Person4') == True
-        assert difference.contains('Z') == True
+        assert difference.contains('Person2') == True
+        assert difference.contains('Person3') == True
         assert difference.size() == 2
-        s = Set(['Person1', 'Person2', 'Person3'])
-        other_set = Set(['Person1', 'Person2', 'Person3'])
-        difference = s.difference(other_set)
-        assert difference.contains('Person3') == False
-        assert difference.contains('Person1') == False
-        assert difference.size() == 0
+
 
     def test_symetric_difference(self):
         s = Set(['Person1', 'Person2', 'Person3'])

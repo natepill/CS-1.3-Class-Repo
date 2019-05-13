@@ -85,18 +85,19 @@ class Set(object):
     def difference(self, other_set):
         """Return a new set that has elments of current set but not other_set"""
 
-
-        difference = Set()
+        difference = Set(self.elements())
 
         for key in other_set.elements():
-            if self.contains(key) == False:
-                difference.add(key)
+
+            # Remove key in difference that appears in other_set
+            if difference.contains(key):
+                difference.remove(key)
 
         return difference
 
     def symetric_difference(self, other_set):
-            '''Return values unique in current set and other_set'''
-        symetric_difference = et()
+        '''Return values unique in current set and other_set'''
+        symetric_difference = Set()
 
         for key in other_set.elements():
             if not self.contains(key):
