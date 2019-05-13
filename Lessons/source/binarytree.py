@@ -1,4 +1,3 @@
-https://github.com/natepill/CS1.3-new-repo.git
 
 #!python
 from stack import LinkedStack
@@ -354,31 +353,49 @@ class BinarySearchTree(object):
     def _traverse_level_order_iterative(self, start_node, visit):
         """Traverse this binary tree with iterative level-order traversal (BFS).
         Start at the given node and visit each node with the given function.
-        TODO: Running time: On Enqueue and dequeue being O1
-        TODO: Memory usage: On Why and under what conditions?"""
-
+        TODO: Running time: O(n) we visit every node in tree
+        TODO: Memory usage: O(n) because the most nodes that will be in queue at a time are (n+1)/2 due to furthest depth in
+        the tree O(n)
+        """
         # Create queue to store nodes not yet traversed in level-order
-        queue = Queue()
-
+        queue = LinkedQueue()
         # Enqueue given starting node
         queue.enqueue(start_node)
-
         # Loop until queue is empty
-        while len(queue) > 0:
+        while not queue.is_empty():
             # Dequeue node at front of queue
             node = queue.dequeue()
-
             # Visit this node's data with given function
             visit(node.data)
-
             # Enqueue this node's left child, if it exists
-            if node.left:
+            if node.left is not None:
                 queue.enqueue(node.left)
-
-             # Enqueue this node's right child, if it exists
-            if node.right:
+            # Enqueue this node's right child, if it exists
+            if node.right is not None:
                 queue.enqueue(node.right)
 
+
+        # # Create queue to store nodes not yet traversed in level-order
+        # queue = ArrayQueue()
+        #
+        # # Enqueue given starting node
+        # queue.enqueue(start_node)
+        #
+        # # Loop until queue is empty
+        # while len(queue) > 0:
+        #     # Dequeue node at front of queue
+        #     node = queue.dequeue()
+        #
+        #     # Visit this node's data with given function
+        #     visit(node.data)
+        #
+        #     # Enqueue this node's left child, if it exists
+        #     if node.left:
+        #         queue.enqueue(node.left)
+        #
+        #      # Enqueue this node's right child, if it exists
+        #     if node.right:
+        #         queue.enqueue(node.right)
 
 
 
