@@ -1,68 +1,134 @@
 from set import Set
 import unittest
 
-
 class SetTest(unittest.TestCase):
 
     def test_init(self):
-        test_set = Set(['Person1','Person2','Person3','Person4','Person5'])
-        assert test_set.data.size() == 5  # size of set is 5
+        s = Set()
+        assert s.size()() == 0
 
-    def test_has_duplicates(self):
-        test_set = Set(['Person1','Person2','Person2','Person4','Person5'])
-        assert test_set.data.size() == 4  # size of set is 4 since Person 2 can't be repeated
+    def test_init_with_list(self):
+        s = Set(['A', 'B', 'C'])
+        assert s.contains('C') == True
+        assert s.size()() == 3
 
     def test_contains(self):
-        test_set = Set(['Person1','Person2','Person3','Person4','Person5'])
-        assert test_set.size() == 4  # should be 4
-        assert test_set.contains('Person1') is True
-        assert test_set.contains('NotPerson') is False  # NotPerson is not in  the set
+        s = Set(['A', 'B', 'C'])
+        assert s.contains('D') == False
+        s = Set([])
+        assert s.contains('D') == False
+
+    def test_length(self):
+        s = Set()
+        assert s.size()() == 0
+        s.add('A')
+        assert s.size() == 1
+        s.add('B')
+        assert s.size() == 2
+        s.remove('A')
+        assert s.size() == 1
+        s.remove('B')
+        assert s.size() == 0
 
     def test_add(self):
-        test_set = Set()
-        test_set.add('Person1')
-        assert test_set.size() == 1
-        assert test_set.contains('Person1') is True  # Person1 is in the set
-        test_set.add('Person2')
-        assert test_set.size() == 2  # set has 2
-        test_set.add('Person2') # No duplicates
-        assert test_set.size() == 2  # Unchanged
-
+        s = Set()
+        s.add('A')
+        assert s.contains('A') == True
+        s.add('A')
+        assert s.size() == 1
+        s.add('B')
+        s.add('B')
+        assert s.size() == 2
+        assert s.contains('A') == True
+        assert s.contains('B') == True
 
     def test_remove(self):
-        test_set = Set(['Person1','Person2','Person3','Person4','Person5'])
-        assert test_set.size() == 5
-        test_set.remove('Person3')
-        assert test_set.size() == 4  # Removed Person3 and set is smaller
+        s = Set(['A', 'B'])
+        assert s.size() == 2
+        s.remove('A')
+        assert s.contains('B')
+        assert s.size() == 1
 
+    def test_intersection(self):
+        s = Set(['A', 'B', 'C'])
+        other_set = Set(['A'])
+        intersection = s.intersection(other_set)
+        assert intersection.contains('A') == True
+        other_set = Set(['D'])
+        intersection = s.intersection(other_set)
+        assert intersection.contains('D') == False
+        assert intersection.size() == 0
 
     def test_union(self):
-        test_set = Set(['Person1','Person2','Person3','Person4','Person5'])
-        other_set = Set(['a', 'b', 'c'])
-        assert test_set.union(other_set).size() == 8  # the union should have 7 elements
-
-    def test_union_with_duplicates(self):
-        test_set = Set(['Person1','Person2','Person3','Person4','Person5'])
-        other_set = Set(['Person1'])
-        assert test_set.union(other_set).size() == 5  # Person1 is a repeated element
-
-    def test_intersect(self):
-        test_set = Set(['Person1','Person2','Person3','Person4','Person5'])
-        other_set = Set(['Person1'])
-        assert test_set.intersection(other_set).size() == 1  # 1 intersecting value
-
+        s = Set(['A', 'B', 'C'])
+        other_set = Set(['A'])
+        union = s.union(other_set)
+        assert union.contains('A') == True
+        assert union.contains('B') == True
+        assert union.contains('C') == True
+        s = Set(['A', 'B', 'C'])
+        other_set = Set(['D', 'E'])
+        union = s.union(other_set)
+        assert union.contains('A') == True
+        assert union.contains('B') == True
+        assert union.contains('C') == True
+        assert union.contains('D') == True
+        assert union.contains('E') == True
 
     def test_difference(self):
-        test_set = Set(['Person1','Person2','Person3','Person4','Person5'])
-        other_set = Set(['a', 'b', 'c', 'd'])
-        assert test_set.difference(other_set).size() == 5
+        s = Set(['A', 'B', 'C'])
+        other_set = Set(['A', 'D'])
+        difference = s.difference(other_set)
+        assert difference.contains('D') == True
+        assert difference.size() == 1
+        other_set = Set(['A', 'D', 'Z'])
+        difference = s.difference(other_set)
+        assert difference.contains('D') == True
+        assert difference.contains('Z') == True
+        assert difference.size() == 2
+        s = Set(['A', 'B', 'C'])
+        other_set = Set(['A', 'B', 'C'])
+        difference = s.difference(other_set)
+        assert difference.contains('C') == False
+        assert difference.contains('A') == False
+        assert difference.size() == 0
 
-    def test_is_subset_true(self):
-        test_set = Set(['Person1','Person2','Person3','Person4','Person5'])
-        other_set = Set(['Person2', 'Person3'])
-        assert other_set.is_subset(set) is True  # is subset
-        other_set = Set(['a', 'b', 'c'])
-        assert test_set.is_subset(other_set) is False # not subset
+    def test_symetric_difference(self):
+        s = Set(['A', 'B', 'C'])
+        other_set = Set(['A', 'D'])
+        difference = s.symetric_difference(other_set)
+        assert difference.contains('D') == True
+        assert difference.contains('B') == True
+        assert difference.contains('C') == True
+        s = Set(['A', 'B', 'C'])
+        other_set = Set(['D', 'E', 'F'])
+        difference = s.symetric_difference(other_set)
+        assert difference.contains('D') == True
+        assert difference.contains('E') == True
+        assert difference.contains('F') == True
+        assert difference.contains('A') == True
+        assert difference.contains('B') == True
+        assert difference.contains('C') == True
+        s = Set(['A', 'B', 'C'])
+        other_set = Set(['A', 'B', 'C'])
+        difference = s.symetric_difference(other_set)
+        assert difference.size() == 0
+
+    def test_is_subset(self):
+        s = Set(['A', 'B', 'C'])
+        other_set = Set(['A'])
+        assert s.is_subset(other_set) == True
+        s = Set(['A', 'B', 'C'])
+        other_set = Set(['A', 'B', 'C'])
+        assert s.is_subset(other_set) == True
+        s = Set(['A', 'B', 'C'])
+        other_set = Set(['A', 'B', 'C', 'D'])
+        assert s.is_subset(other_set) == False
+        s = Set(['A', 'B', 'C'])
+        other_set = Set(['D'])
+        assert s.is_subset(other_set) == False
+
+
 
 
 if __name__ == '__main__':

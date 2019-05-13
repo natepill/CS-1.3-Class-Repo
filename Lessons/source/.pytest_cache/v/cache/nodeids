@@ -1,12 +1,6 @@
 [
-  "set_test.py::SetTest::test_add",
-  "set_test.py::SetTest::test_contains",
-  "set_test.py::SetTest::test_difference",
-  "set_test.py::SetTest::test_has_duplicates",
-  "set_test.py::SetTest::test_init",
-  "set_test.py::SetTest::test_intersect",
-  "set_test.py::SetTest::test_is_subset_true",
-  "set_test.py::SetTest::test_remove",
-  "set_test.py::SetTest::test_union",
-  "set_test.py::SetTest::test_union_with_duplicates"
+  "search_test.py::SearchTest::test_binary_search_with_items_in_list",
+  "search_test.py::SearchTest::test_binary_search_with_items_not_in_list",
+  "search_test.py::SearchTest::test_linear_search_with_items_in_list",
+  "search_test.py::SearchTest::test_linear_search_with_items_not_in_list"
 ]
