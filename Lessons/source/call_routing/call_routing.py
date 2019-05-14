@@ -20,7 +20,7 @@ def load_routes(file_name):
             route_tree = TrieTree(route_and_price)
 
 
-    # return route_tree
+    return route_tree
 
 
 def reading_phone_numbers(file_name):
@@ -36,18 +36,18 @@ def reading_phone_numbers(file_name):
 
 def call_costs():
     """Return a price for each phone number"""
-    phone_number, price = 0, 0
-    call_cost = [phone_number, price]
+    # phone_number, price = 0, 0
+    # call_cost = [phone_number, price]
 
     # file_paths
-    route_costs_4 = "data/route-costs-10.txt"
-    phone_numbers_3 = "data/phone-numbers-10.txt"
+    route_costs_10 = "data/route-costs-10.txt"
+    phone_numbers_10 = "data/phone-numbers-10.txt"
     # route_costs_10 = "project/data/route-costs-100.txt"
     # phone_numbers_10 = "project/data/phone-numbers-100.txt"
 
 
     # read routes and phone numbers
-    route_costs = load_routes(route_costs_4)
+    route_costs = load_routes(route_costs_10)
 
     print(route_costs.size)
 
