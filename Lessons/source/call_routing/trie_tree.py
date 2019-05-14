@@ -27,13 +27,13 @@ class TrieTree(object):
         """Initialize trie tree with all routes"""
         self.root = TrieNode()
         self.size = 0
-        if routes != None:
-            # for route in routes:
-            print("routes[0]:", routes[0])
-            print("routes[1]:", routes[1])
 
-            self.add(routes[0], routes[1])
-            self.size += 1
+        if routes != None:
+            for route in routes:
+                self.add(route[0], route[1])
+                self.size += 1
+
+
 
     def __repr__(self):
         "return A string represention of the Trie tree"
@@ -53,7 +53,6 @@ class TrieTree(object):
             # check if we are at the end of the route number
             if index == len(route_number)-1:
                 # check if the price the minimum we want to store the cheapest
-                print("Value of price:",price)
                 if node.price == 0 or float(price) < node.price:
                     node.price = float(price)
                 # we are end of the path
@@ -61,6 +60,7 @@ class TrieTree(object):
                 break
             # updating the node
             node = node.children[int(digit)]
+
 
     def search(self, phone_number):
         """Return a price for givin phone number searching through Trie structured routes"""
