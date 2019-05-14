@@ -288,14 +288,13 @@ class BinarySearchTree(object):
         TODO: Memory usage: ??? Why and under what conditions?"""
 
         if node is not None:
-
-            visit(node)
-
-            if node.left is not None:
-                self._traverse_pre_order_recursive(node.left, visit)
-
-            if node.right is not None:
-                self._traverse_pre_order_recursive(node.right, visit)
+            
+            # Visit node's data
+            visit(node.data)
+            # Traverse left subtree
+            self._traverse_pre_order_recursive(node.left, visit)
+            # Traverse right subtree
+            self._traverse_pre_order_recursive(node.right, visit)
 
 
     def _traverse_pre_order_iterative(self, node, visit):
@@ -315,23 +314,22 @@ class BinarySearchTree(object):
         return items
 
     def _traverse_post_order_recursive(self, node, visit):
-        """Traverse this binary tree with recursive post-order traversal (DFS).
+        """
+        Traverse this binary tree with recursive post-order traversal (DFS).
         Start at the given node and visit each node with the given function.
-        TODO: Running time: On Why and under what conditions?
-        TODO: Memory usage: O Why and under what conditions?"""
+        Running time: O(n) because every node is visited
+        Memory usage: O(log n) we are creating a stack that will hold
+        """
 
+       # check that node is not none
         if node is not None:
+            # Traverse left subtree
+            self._traverse_post_order_recursive(node.left, visit)
+            # Traverse right subtree
+            self._traverse_post_order_recursive(node.right, visit)
 
-            if node.right is not None:
-
-                if node.left is not None:
-                    self._traverse_post_order_recursive(node.left, visit)
-
-                if node.right is not None:
-                    self._traverse_post_order_recursive(node.right, visit)
-
-
-                visit(node.data)
+            # Visit this node's data with given function
+            visit(node.data)
 
 
     def _traverse_post_order_iterative(self, node, visit):
