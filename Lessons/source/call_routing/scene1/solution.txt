@@ -1,0 +1,4 @@
+
+When the request is to find the pricing costs with just a few routing numbers, the
+most efficient solution is to just use Command F on MacOS devices in order to match the longest
+routing numbers to the requested phone numbers.
