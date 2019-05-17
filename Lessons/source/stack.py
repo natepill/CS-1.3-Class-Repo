@@ -87,6 +87,7 @@ class ArrayStack(object):
     def push(self, item):
         """Insert the given item on the top of this stack.
         Running time: O1 – inserting at the start at known index [TODO]"""
+        # Add to top
         self.list.append(item)  # append to n-1
 
 
