@@ -100,7 +100,12 @@ class ArrayQueue(object):
         """Remove and return the item at the front of this queue,
         or raise ValueError if this queue is empty.
         Running time: O(n) – Array reallocate"""
-        return self.list.pop(0)
+
+        # List not empty
+        if not self.is_empty():
+            return self.list.pop(0)
+        else:
+            raise ValueError("List is empty")
 
         # TODO: Remove and return front item, if any
 

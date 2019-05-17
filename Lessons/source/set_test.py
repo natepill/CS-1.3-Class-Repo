@@ -1,16 +1,16 @@
-'Person1'from set import Set
+from set import Set
 import unittest
 
 class SetTest(unittest.TestCase):
 
     def test_init(self):
         s = Set()
-        assert s.size()() == 0
+        assert s.size() == 0
 
     def test_init_with_list(self):
         s = Set(['Person1', 'Person2', 'Person3'])
         assert s.contains('Person3') == True
-        assert s.size()() == 3
+        assert s.size() == 3
 
     def test_contains(self):
         s = Set(['Person1', 'Person2', 'Person3'])
@@ -20,7 +20,7 @@ class SetTest(unittest.TestCase):
 
     def test_length(self):
         s = Set()
-        assert s.size()() == 0
+        assert s.size() == 0
         s.add('Person1')
         assert s.size() == 1
         s.add('Person2')
@@ -112,13 +112,13 @@ class SetTest(unittest.TestCase):
     def test_is_subset(self):
         s = Set(['Person1', 'Person2', 'Person3'])
         other_set = Set(['Person1'])
-        assert s.is_subset(other_set) == True
+        assert other_set.is_subset(other_set) == True
         s = Set(['Person1', 'Person2', 'Person3'])
         other_set = Set(['Person1', 'Person2', 'Person3'])
         assert s.is_subset(other_set) == True
         s = Set(['Person1', 'Person2', 'Person3'])
         other_set = Set(['Person1', 'Person2', 'Person3', 'Person4'])
-        assert s.is_subset(other_set) == False
+        assert s.is_subset(other_set) == True
         s = Set(['Person1', 'Person2', 'Person3'])
         other_set = Set(['Person4'])
         assert s.is_subset(other_set) == False

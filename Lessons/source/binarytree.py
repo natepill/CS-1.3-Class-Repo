@@ -284,11 +284,12 @@ class BinarySearchTree(object):
     def _traverse_pre_order_recursive(self, node, visit):
         """Traverse this binary tree with recursive pre-order traversal (DFS).
         Start at the given node and visit each node with the given function.
-        TODO: Running time: ??? Why and under what conditions?
-        TODO: Memory usage: ??? Why and under what conditions?"""
+        Running time: O(n) we visit every node in the tree
+        Memory usage: O(n) because we are creating a stack
+        """
 
         if node is not None:
-            
+
             # Visit node's data
             visit(node.data)
             # Traverse left subtree
