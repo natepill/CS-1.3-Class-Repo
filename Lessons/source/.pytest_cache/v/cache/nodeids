@@ -1,13 +1,8 @@
 [
-  "set_test.py::SetTest::test_add",
-  "set_test.py::SetTest::test_contains",
-  "set_test.py::SetTest::test_difference",
-  "set_test.py::SetTest::test_init",
-  "set_test.py::SetTest::test_init_with_list",
-  "set_test.py::SetTest::test_intersection",
-  "set_test.py::SetTest::test_is_subset",
-  "set_test.py::SetTest::test_length",
-  "set_test.py::SetTest::test_remove",
-  "set_test.py::SetTest::test_symetric_difference",
-  "set_test.py::SetTest::test_union"
+  "stack_test.py::StackTest::test_init",
+  "stack_test.py::StackTest::test_init_with_list",
+  "stack_test.py::StackTest::test_length",
+  "stack_test.py::StackTest::test_peek",
+  "stack_test.py::StackTest::test_pop",
+  "stack_test.py::StackTest::test_push"
 ]
