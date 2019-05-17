@@ -4,9 +4,9 @@ from time import time
 from trie_tree import TrieTree
 
 
-ROUTE_FILE_FORMAT = "project/data/route-costs-{}.txt"
-PHONE_FILE_FORMAT = "project/data/phone-numbers-{}.txt"
-OUTPUT_FILE_FORMAT = 'call_costs/call-costs-{}.txt'
+ROUTE_FILE_FORMAT = "../data/route-costs-{}.txt"
+PHONE_FILE_FORMAT = "../data/phone-numbers-{}.txt"
+OUTPUT_FILE_FORMAT = '../call_costs/call-costs-{}.txt'
 
 # RUNTIME_SEPARATOR_FORMAT = "======================================== Scenario {scenario_num} ========================================"
 
@@ -148,11 +148,3 @@ if __name__ == "__main__":
 
     # scenario 2
     # call_costs(100, 10)
-
-
-
-'''
-Optimization Notes:
-Want to create an array of lenth 2 with routing number and its price, then load it into the Trie Tree
-    - This means reassigning the added array for each [route, cost] in the file that's being read in
-'''
