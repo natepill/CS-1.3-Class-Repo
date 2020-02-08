@@ -15,6 +15,4 @@ class DoublyLinkedList(LinkedList):
         self.tail = None
         self.size = 0
 
-
-
-    # def 
+    
